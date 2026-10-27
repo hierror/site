@@ -4,4 +4,4 @@ date: 2026-10-06
 tags: [notes]
 ---
 
-primeiro post. me substitua.
+esse é meu primeiro post.
