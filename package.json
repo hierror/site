@@ -1,0 +1,17 @@
+{
+  "name": "site",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:hierror/site.git",
+  "author": "Hierro Duarte <hierrodscherer@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "serve": "eleventy --serve --quiet"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.5"
+  }
+}

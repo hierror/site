@@ -1,0 +1,141 @@
+/*
+ * Highlights. Rethink Sans is BeConfident's own font; Itaú Display
+ * and Sotheby's Mercury Display are proprietary, so Nunito Sans and
+ * Source Serif 4 (display optical size) stand in. `text=` subsets each
+ * family to just the letters it renders.
+ */
+@import url("https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@600&family=Nunito+Sans:wght@700&family=Source+Serif+4:opsz,wght@60,500&display=swap&text=BeConfidentIta%C3%BASotheby%27s");
+
+/*
+ * The home page is a fixed composition drawn on a 1440×900 "plate".
+ * .home is a size container, so everything inside is measured against the
+ * plate instead of the viewport: the whole page scales as one piece.
+ *
+ * --px is one reference pixel of the 1440px-wide design. On phones the
+ * plate becomes the whole portrait viewport (see the media query at the end).
+ */
+
+.page-home {
+  display: grid;
+  min-height: 100svh;
+}
+
+.home {
+  --px: calc(100cqi / 1440);
+
+  container-type: inline-size;
+  width: min(100%, 160svh);
+  aspect-ratio: 16 / 10;
+  margin: auto;
+  overflow: clip;
+
+  /* 30px reference cells: column line n sits at (n - 1) * 30px */
+  display: grid;
+  grid-template-columns: repeat(48, minmax(0, 1fr));
+  grid-template-rows: repeat(30, minmax(0, 1fr));
+}
+
+/* Text: every block on the plate */
+
+.home__text {
+  justify-self: start;
+  align-self: start;
+  white-space: pre;
+  font-size: calc(16 * var(--px));
+}
+
+.home__text--serif {
+  font-family: "Times New Roman", Times, serif;
+  font-size: calc(17.6 * var(--px));
+}
+
+.home__text--mono {
+  font-family: "Courier New", Courier, monospace;
+  line-height: 1.5em;
+}
+
+/* Sections: placement on the plate as grid-area row / column */
+
+.home__hobbies {
+  grid-area: 2 / 14;
+}
+
+.home__bio {
+  grid-area: 9 / 2;
+}
+
+.home__blog {
+  grid-area: 16 / 25;
+}
+
+.home__education {
+  grid-area: 12 / 1 / auto / 46;
+  justify-self: end;
+  font-size: calc(19.2 * var(--px));
+}
+
+.home__nicknames {
+  grid-area: 1 / 1 / -1 / -1;
+  align-self: end;
+  margin: 0 0 calc(-30 * var(--px)) calc(-75 * var(--px));
+  transform: rotate(30deg);
+}
+
+/* Highlight: employer names, in each brand's type and color */
+
+.highlight--beconfident {
+  font-family: "Rethink Sans", sans-serif;
+  font-weight: 600;
+  color: #7e2eff;
+}
+
+.highlight--itau {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 700;
+  color: #ff6200;
+}
+
+.highlight--sothebys {
+  font-family: "Source Serif 4", serif;
+  font-weight: 500;
+  color: #213250;
+}
+
+/*
+ * Phones: the plate fills the viewport exactly (no scroll) on a 12×24 grid,
+ * and --px is a pixel of a 440px-wide design. Prose wraps; ascii art doesn't.
+ */
+@media (max-width: 600px) {
+  .page-home {
+    overflow: hidden;
+  }
+
+  .home {
+    --px: calc(100cqi / 440);
+
+    width: 100%;
+    height: 100svh;
+    aspect-ratio: auto;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: repeat(24, minmax(0, 1fr));
+  }
+
+  .home__hobbies {
+    grid-area: 2 / 2 / auto / 12;
+    white-space: pre-wrap;
+  }
+
+  .home__bio {
+    grid-area: 7 / 2 / auto / 12;
+    white-space: pre-wrap;
+  }
+
+  .home__blog {
+    grid-area: 17 / 3;
+  }
+
+  .home__education {
+    grid-area: 15 / 1 / auto / 12;
+    font-size: calc(14 * var(--px));
+  }
+}

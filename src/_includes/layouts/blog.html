@@ -1,0 +1,16 @@
+---
+layout: "layouts/base.html"
+stylesheet: "blog"
+bodyClass: "page-blog"
+---
+
+<header class="blog-header">
+  <a class="blog-header__home" href="/">hierror</a>
+  <a href="/blog/">blog</a>
+</header>
+
+<main class="blog">{{ content }}</main>
+
+<footer class="blog-footer">
+  <a href="/">&larr; {{ "backHome" | t: page.lang }}</a>
+</footer>

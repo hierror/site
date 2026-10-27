@@ -1,0 +1,21 @@
+---
+layout: "layouts/blog.html"
+---
+
+<article class="post">
+  <header class="post__header">
+    <h1 class="post__title">{{ title }}</h1>
+    <time class="post__date" datetime="{{ page.date | isoDate }}">{{ page.date | isoDate }}</time>
+    {% render "content-types.html", tags: tags, lang: page.lang %}
+    {%- assign translations = page.url | locale_links %}
+    {%- if translations.size > 0 %}
+    <p class="post__translations">
+      {{ "readIn" | t: page.lang }}:
+      {%- for link in translations %}
+      <a href="{{ link.url }}" lang="{{ link.lang }}" hreflang="{{ link.lang }}">{{ link.lang | languageLabel }}</a>{% unless forloop.last %},{% endunless %}
+      {%- endfor %}
+    </p>
+    {%- endif %}
+  </header>
+  <div class="post__content">{{ content }}</div>
+</article>

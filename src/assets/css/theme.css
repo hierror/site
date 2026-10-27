@@ -1,0 +1,21 @@
+:root {
+  --color-bg: #fff;
+  --color-link: #0000ee;
+  --color-special: #a019cd;
+  --color-text: #000;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+.special-link {
+  color: var(--color-special);
+  text-decoration: underline;
+}

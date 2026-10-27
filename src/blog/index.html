@@ -1,0 +1,9 @@
+---
+layout: "layouts/blog.html"
+title: "blog"
+permalink: "/blog/"
+---
+
+<h1 class="blog__title">blog</h1>
+
+{% render "post-list.html", posts: collections.uniquePosts %}

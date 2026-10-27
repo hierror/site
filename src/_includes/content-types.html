@@ -1,0 +1,9 @@
+{%- comment -%} Expects `tags` (a post's tags) and `lang`. {%- endcomment -%}
+{%- assign types = tags | contentTypes -%}
+{%- if types.size > 0 -%}
+<span class="post-types">
+  {%- for type in types %}
+  <a class="post-types__item" href="/{{ lang }}/blog/tags/{{ type }}/">{{ type | contentTypeLabel: lang }}</a>
+  {%- endfor %}
+</span>
+{%- endif -%}

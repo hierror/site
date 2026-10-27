@@ -1,0 +1,14 @@
+{%- comment -%} Expects `posts`, and optionally `lang` for the empty message. {%- endcomment -%}
+{% if posts.size > 0 %}
+<ul class="post-list">
+  {% for post in posts reversed %}
+  <li class="post-list__item">
+    <time datetime="{{ post.date | isoDate }}">{{ post.date | isoDate }}</time>
+    <a href="{{ post.url }}" hreflang="{{ post.data.page.lang }}">{{ post.data.title }}</a>
+    {% render "content-types.html", tags: post.data.tags, lang: post.data.page.lang %}
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>{{ "nothingHere" | t: lang }}</p>
+{% endif %}

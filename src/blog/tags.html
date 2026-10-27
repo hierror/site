@@ -1,0 +1,16 @@
+---
+layout: "layouts/blog.html"
+pagination:
+  data: collections.contentTypePages
+  size: 1
+  alias: entry
+eleventyComputed:
+  title: "{{ entry.type | contentTypeLabel: entry.lang }}"
+permalink: "/{{ entry.lang }}/blog/tags/{{ entry.type }}/"
+---
+
+<h1 class="blog__title">{{ "taggedWith" | t: entry.lang }} “{{ entry.type | contentTypeLabel: entry.lang }}”</h1>
+
+{% render "post-list.html", posts: entry.posts, lang: entry.lang %}
+
+<p><a href="/blog/">{{ "allPosts" | t: entry.lang }}</a></p>

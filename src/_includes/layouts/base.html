@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="{{ page.lang }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% if title %}{{ title }} · {% endif %}hierror</title>
+    {%- assign alternates = page.url | locale_links %}
+    {%- for link in alternates %}
+    <link rel="alternate" hreflang="{{ link.lang }}" href="{{ link.url }}" />
+    {%- endfor %}
+    {% if description %}<meta name="description" content="{{ description }}" />{% endif %}
+    <link rel="stylesheet" href="/assets/css/global.css" />
+    <link rel="stylesheet" href="/assets/css/theme.css" />
+    {% if stylesheet %}<link rel="stylesheet" href="/assets/css/{{ stylesheet }}.css" />{% endif %}
+  </head>
+  <body class="{{ bodyClass }}">
+    {{ content }}
+  </body>
+</html>
